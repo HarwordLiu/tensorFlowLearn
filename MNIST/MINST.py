@@ -30,7 +30,7 @@ cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction), reduction
 train_step = tf.train.GradientDescentOptimizer(0.5).minimize(cross_entropy)
 
 sess = tf.Session()
-sess.run(tf.initialize_all_variables())
+sess.run(tf.global_variables_initializer())
 
 for i in range(1000):
     #每次学习只取100张
