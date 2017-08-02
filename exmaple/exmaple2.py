@@ -12,12 +12,12 @@ def add_layer(inputs, in_size, out_size, n_layer, activation_function=None):
             Weights = tf.Variable(tf.random_normal([in_size, out_size]), name='W')
 
             # 显示
-            tf.histogram_summary(layer_name+'/weights',Weights)   # tensorflow 0.12 以下版的
+            tf.histogram_summary(layer_name+'/weights', Weights)   # tensorflow 0.12 以下版的
             # tf.summary.histogram(layer_name + '/weights', Weights) # tensorflow >= 0.12
         with tf.name_scope('Biases'):
             biases = tf.Variable(tf.zeros([1, out_size]) + 0.1, name='B')
 
-            tf.histogram_summary(layer_name+'/biase',biases)   # tensorflow 0.12 以下版的
+            tf.histogram_summary(layer_name+'/biase', biases)   # tensorflow 0.12 以下版的
             # tf.summary.histogram(layer_name + '/biases', biases)  # Tensorflow >= 0.12
         with tf.name_scope('Wx_plus_b'):
             Wx_plus_b = tf.matmul(inputs, Weights) + biases
@@ -26,7 +26,7 @@ def add_layer(inputs, in_size, out_size, n_layer, activation_function=None):
         else:
             outputs = activation_function(Wx_plus_b)
 
-            tf.histogram_summary(layer_name+'/outputs',outputs) # tensorflow 0.12 以下版本
+            tf.histogram_summary(layer_name+'/outputs', outputs) # tensorflow 0.12 以下版本
             # tf.summary.histogram(layer_name + '/outputs', outputs) # Tensorflow >= 0.12
         return outputs
 
@@ -71,7 +71,7 @@ sess.run(init)
 
 # 绘制输入数据
 fig = plt.figure()
-ax = fig.add_subplot(1,1,1)
+ax = fig.add_subplot(1, 1, 1)
 ax.scatter(x_data, y_data)
 plt.ion()
 plt.show()
